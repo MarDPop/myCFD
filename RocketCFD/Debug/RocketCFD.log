@@ -1,0 +1,3 @@
+﻿  tester.cpp
+c:\users\me\documents\visual studio 2017\projects\rocketcfd\rocketcfd\tester.cpp(44): warning C4244: 'argument': conversion from 'double' to 'size_t', possible loss of data
+  RocketCFD.vcxproj -> C:\Users\Me\Documents\Visual Studio 2017\Projects\RocketCFD\Debug\RocketCFD.exe

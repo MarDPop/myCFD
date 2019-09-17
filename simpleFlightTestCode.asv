@@ -1,0 +1,42 @@
+%% simple flight test code
+
+u_exit = 1667;
+
+thrust = 3960;
+
+m_dot = thrust/u_exit;
+
+throat_r = 0.01;
+
+exit_r = sqrt(8)*throat_r;
+
+body_r = exit_r*1.5;
+
+cross_area = pi*body_r*body_r;
+
+Cd = 1.0;
+
+mass = 200;
+
+empty_mass = 100;
+
+dt = 0.1;
+
+y(1) = 1;
+
+y_dot(1) = 0;
+
+i = 1;
+while y > 0
+    rho = exp(-y(i)/8500);
+    q = 0.625*rho*y_dot(i)^2;
+    f = -9.8 - sign(y_dot(i))*Cd*cross_area*q;
+    if (mass> empty_mass)
+        f = f+thrust;
+    end
+    a = f/mass;
+    y(i+1) = y(i) + y_dot(i)*dt + a*dt*dt*0.5;
+    y_dot(i+1) = y_dot(i) + a*dt;
+end
+
+plot(y);
